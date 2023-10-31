@@ -11,11 +11,26 @@ const bcrypt = require('bcrypt');
 // Signup
 router.post('/signup', (req, res) => {
     let {name, email, password, dateOfBirth} = req.body;
-    name = name.trim();
-    email = email.trim();
-    password = password.trim();
-    dateOfBirth = dateOfBirth.trim();
+    if (name && typeof name === 'string') {
+        name = name.trim();
+    } else {
+        // Handle the case where 'name' is not a string or is undefined
+        return res.status(400).json({ error: 'Invalid or missing name' });
+    }
 
+    if (email && typeof email === 'string') {
+        email = email.trim();
+    } else {
+        // Handle the case where 'email' is not a string or is undefined
+        return res.status(400).json({ error: 'Invalid or missing email' });
+    }
+
+    if (password && typeof password === 'string') {
+        password = password.trim();
+    } else {
+        // Handle the case where 'password' is not a string or is undefined
+        return res.status(400).json({ error: 'Invalid or missing password' });
+    }
     if(name == "" || email == "" || password == "" || dateOfBirth == ""){
         res.json({
             status: "FAILED",
