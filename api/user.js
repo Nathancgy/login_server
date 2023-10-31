@@ -124,7 +124,7 @@ router.post('/signin', (req, res) => {
         // Check if user exists
         User.find({email})
         .then(data => {
-            if(data) {
+            if(data.length) {
                 // User exists
 
                 const hashedPassword = data[0].password;
