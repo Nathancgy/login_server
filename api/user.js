@@ -156,7 +156,12 @@ router.post('/signin', (req, res) => {
                 })
             }
         })
-        
+        .catch(err => {
+            res.json({
+                status: "FAILED",
+                message: "An error occurred while checking for existing user"
+            })
+        })
     }
 })
 
