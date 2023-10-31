@@ -149,8 +149,14 @@ router.post('/signin', (req, res) => {
                         message: "An error occured while comparing passwords"
                     })
                 })
+            } else {
+                res.json({
+                    status: "FAILED",
+                    message: "Invalid credentials entered!"
+                })
             }
         })
+        
     }
 })
 
