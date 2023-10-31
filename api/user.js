@@ -70,6 +70,12 @@ router.post('/signup', (req, res) => {
                             data: result,
                         })
                     })
+                    .catch(err => {
+                        res.json({
+                            status: "FAILED",
+                            message: "An error occurred while saving user account"
+                        })
+                    })
                 })
                 .catch(err => {
                     res.json({
