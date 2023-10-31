@@ -57,7 +57,18 @@ router.post('/signup', (req, res) => {
                 const saltRounds = 10;
                 bcrypt.hash(password, saltRounds).then(hashedPassword => {
                     const newUser = new User({
-                        
+                        name, 
+                        email,
+                        password: hashedPassword,
+                        dateOfBirth
+                    });
+
+                    newUser.save().then(result => {
+                        res.json({
+                            status: "SUCCESS",
+                            message: "Signup successful",
+                            data: result,
+                        })
                     })
                 })
                 .catch(err => {
