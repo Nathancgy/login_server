@@ -1,2 +1,2 @@
 # login_server
-Backend for a login system
+Backend for a login-system
